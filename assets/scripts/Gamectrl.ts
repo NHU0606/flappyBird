@@ -39,6 +39,7 @@ export class GameCtrl extends Component {
     resetGame(){
         this.result.resetScore();
         this.startGame();
+        console.log(1111)
         this.isOver = false;
     }
 
