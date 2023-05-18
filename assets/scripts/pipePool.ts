@@ -1,8 +1,8 @@
 import { Result } from './Result';
-import { _decorator, Component, Node, Prefab, NodePool, instantiate, Vec3 } from 'cc';
+import { _decorator, Component, Node, Prefab, NodePool, instantiate, Vec3, math } from 'cc';
 const { ccclass, property } = _decorator;
 const random = (min, max) => {
-    return Math.random() * (max - min) + min;
+    return math.randomRangeInt(min, max);
 }
 
 @ccclass('pipePool')
