@@ -2,12 +2,12 @@
   "ver": "2.0.3",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "f17c89cc-756a-4a0c-aed0-dbfee6287c1d",
+  "uuid": "9977a130-a30f-4599-a3fa-5245f3f0173c",
   "files": [
     ".cconb"
   ],
   "subMetas": {},
   "userData": {
-    "name": "birdR"
+    "name": "tabRight"
   }
 }

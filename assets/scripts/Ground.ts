@@ -16,17 +16,6 @@ export class Ground extends Component {
 
     private speedGround: number = 10;
 
-    startGround(){
-        this.groundWidth1 = this.ground1.getComponent(UITransform).width;
-        this.groundWidth2 = this.ground2.getComponent(UITransform).width;
-    
-        this.tempStartPosition1.x = 0;
-        this.tempStartPosition2.x = this.groundWidth1;
-
-        this.ground1.setPosition(this.tempStartPosition1)
-        this.ground2.setPosition(this.tempStartPosition2)
-    }
-
     update(deltaTime: number){
         this.tempStartPosition1 = this.ground1.position;
         this.tempStartPosition2 = this.ground2.position;

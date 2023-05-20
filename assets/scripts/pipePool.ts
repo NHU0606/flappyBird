@@ -1,4 +1,4 @@
-import { Result } from './Result';
+import { result } from './result';
 import { _decorator, Component, Node, Prefab, NodePool, instantiate, Vec3, math } from 'cc';
 const { ccclass, property } = _decorator;
 const random = (min, max) => {
@@ -8,16 +8,16 @@ const random = (min, max) => {
 @ccclass('pipePool')
 export class pipePool extends Component {
     @property({type: Prefab})
-    public prefabPipe = null;
+    private prefabPipe = null;
 
-    @property({type: Result})
-    public result: Result;
+    @property({type: result})
+    private result: result;
 
-    isPass:boolean;
+    private isPass:boolean;
     private listPipe: Node[] =[null, null, null]
     private speed: number = 250;
     private pos: Vec3 = new Vec3();
-    public game;
+    private game;
    
 
     onLoad(){
@@ -38,14 +38,14 @@ export class pipePool extends Component {
     }
 
     update(dt: number){
-        for (let i = 0; i< this.listPipe.length; i++){
+        for (let i = 0; i < this.listPipe.length; i++){
             this.pos = this.listPipe[i].getPosition()
             this.pos.x -= this.speed*dt;
 
             if(this.pos.x <= -2000){
                 this.result.addScore()
                 this.isPass = false;
-                this.pos.x = 600
+                this.pos.x = -500
                 this.pos.y = random(150, 25)
             }
             this.listPipe[i].setPosition(this.pos)

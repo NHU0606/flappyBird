@@ -1,10 +1,14 @@
+import { pipePool } from './pipePool';
 import { _decorator, Component, EventMouse, IPhysics2DContact, Contact2DType, director, ColliderComponent, EventKeyboard, Quat, EventTouch, KeyCode, Node, Vec3, input, Input} from 'cc';
+import { gameCtrl } from './gameCtrl';
 const { ccclass, property } = _decorator;
 
 @ccclass('bird')
 export class bird extends Component {         
-    
-    public birdPosition: Vec3
+    @property({type: gameCtrl})
+    private gameCtrl: gameCtrl;
+
+    private birdPosition: Vec3
     public hitPipe:boolean = false; 
     private speed:number = 0.5;
 
@@ -48,9 +52,9 @@ export class bird extends Component {
         this.node.position = new Vec3(this.node.position.x, positionY, 0)
         
         if(this.node.position.y > 317) {
-            this.node.position = new Vec3(this.node.position.x, 300, 0)
+            this.gameCtrl.gameOver();
         } else if(this.node.position.y < -260) {
-            this.node.position = new Vec3(this.node.position.x, -260, 0)
+            this.gameCtrl.gameOver();
         }
     }
 }

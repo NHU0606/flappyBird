@@ -1,15 +1,15 @@
-import { Result } from './Result';
+import { result } from './result';
 import { bird } from './bird';
 import { pipePool } from './pipePool';
 import { audioCtrl } from './audio/audioCtrl';
-import { _decorator, Contact2DType, Collider2D, IPhysics2DContact, Component, Node, CCInteger, director, find, Sprite} from 'cc';
+import { _decorator, Contact2DType, Collider2D, IPhysics2DContact, Component, Node, CCInteger, director, find, Vec3,Sprite} from 'cc';
 import { changeColor } from './menu/changeColor';
 const { ccclass, property } = _decorator;
 
 @ccclass('gameCtrl')
 export class gameCtrl extends Component {      
-    @property({type: Result})
-    public result: Result;
+    @property({type: result})
+    public result: result;
 
     @property({type: bird})
     public bird: bird;
@@ -28,10 +28,15 @@ export class gameCtrl extends Component {
     @property(Sprite)
     public sprite: Sprite = null;
 
-    protected onLoad(): void {
+    protected start(): void {
         let getColor = find('ChangeNode')
         let getColorPara = getColor.getComponent(changeColor)
         this.sprite.color = getColorPara.temp;
+        console.log("log ne", this.sprite.color)
+    }
+
+    protected onLoad(): void {
+        
 
         this.result.resetScore();
         let collider = this.bird.getComponent(Collider2D);
@@ -82,10 +87,15 @@ export class gameCtrl extends Component {
             this.gameOver();
         }
     }
-
+    
     protected update(dt: number): void {
         if (this.isOver == false) {
             this.birdHit()
         }
+        // if(this.bird.birdPosition.y > 317) {
+        //     this.gameOver();            
+        // } else if(this.bird.birdPosition.y < -260) {
+        //     this.gameOver();
+        // }
     }
 }

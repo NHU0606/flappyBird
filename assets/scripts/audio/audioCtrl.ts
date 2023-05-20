@@ -5,10 +5,10 @@ const { ccclass, property } = _decorator;
 @ccclass('audioCtrl')
 export class audioCtrl extends Component {
     @property(AudioSource)
-    public audio: AudioSource = null!;
+    private audio: AudioSource = null;
 
     @property({type: bird})
-    public bird: bird;
+    private bird: bird;
 
     @property({ type: Node })
     private on: Node;
@@ -19,7 +19,7 @@ export class audioCtrl extends Component {
     private isIconShown: boolean = false;
 
     protected onLoad(): void {
-        const audioSource = this.node.getComponent(AudioSource)!;
+        const audioSource = this.node.getComponent(AudioSource);
         this.audio = audioSource;       
         if (this.bird.hitPipe == true) {
             this.pauseAudio()

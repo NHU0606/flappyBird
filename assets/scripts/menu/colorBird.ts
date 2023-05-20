@@ -2,14 +2,13 @@
 import { _decorator, Color, Component, Node, Sprite, color, director } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('getColorBirdPlay')
-export class getColorBirdPlay extends Component {   
+@ccclass('colorBird')
+export class colorBird extends Component {   
 
     @property(Sprite)
-    public sprite: Sprite = null;
+    private sprite: Sprite = null;
 
     public randomColor = null;
-
 
     protected onLoad(): void {        
         this.node.on(Node.EventType.TOUCH_START, this.chooseColor, this);
@@ -18,6 +17,5 @@ export class getColorBirdPlay extends Component {
     public chooseColor() {
         this.randomColor = color(Math.random() * 255, Math.random() * 255, Math.random() * 255);
         this.sprite.color = this.randomColor;
-        console.log(this.randomColor)
     }  
 }

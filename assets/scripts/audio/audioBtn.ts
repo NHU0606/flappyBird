@@ -43,13 +43,8 @@ export class audioBtn extends Component {
     }
 
     updateIconsVisibility() {
-        if (this.isIconShown) {
-            this.iconToShow.node.active = true;
-            this.iconToHide.node.active = false;
-        } else {
-            this.iconToShow.node.active = false;
-            this.iconToHide.node.active = true;
-        }
+        this.iconToShow.node.active = this.isIconShown;
+        this.iconToHide.node.active = !this.isIconShown;
     }
 
     onClickBtnAgain () {
