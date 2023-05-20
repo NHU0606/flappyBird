@@ -8,7 +8,3 @@ Some Functions i have:
 - turn on/off music
 - play again
 
-----list need to fix
-
-- use node to active true/false
-- fix UItransform
