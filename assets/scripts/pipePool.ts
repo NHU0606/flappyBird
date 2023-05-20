@@ -1,4 +1,5 @@
 import { result } from './result';
+import { score } from './score';
 import { _decorator, Component, Node, Prefab, NodePool, instantiate, Vec3, math } from 'cc';
 const { ccclass, property } = _decorator;
 const random = (min, max) => {
@@ -7,6 +8,9 @@ const random = (min, max) => {
 
 @ccclass('pipePool')
 export class pipePool extends Component {
+    @property({type: score})
+    public score: score;
+
     @property({type: Prefab})
     private prefabPipe = null;
 
@@ -43,7 +47,7 @@ export class pipePool extends Component {
             this.pos.x -= this.speed*dt;
 
             if(this.pos.x <= -2000){
-                this.result.addScore()
+                this.score.addScore()
                 this.isPass = false;
                 this.pos.x = -500
                 this.pos.y = random(150, 25)
