@@ -42,8 +42,8 @@ export class GameController extends Component {
         }
 
         let parameters = find('MyNode');
-        let BirdParameters = parameters.getComponent(SaveColor);
-        this.sprite.color = BirdParameters.temp;
+        let birdParameters = parameters.getComponent(SaveColor);
+        this.sprite.color = birdParameters.temp;
     }
 
     start(){
