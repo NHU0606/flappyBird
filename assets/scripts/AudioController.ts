@@ -1,22 +1,20 @@
-import { _decorator, Component, input, Input, EventTouch, director, Node, AudioSource, Button } from 'cc';
-import { bird } from '../bird';
+import { _decorator, Component, Node, AudioSource, Sprite } from 'cc';
+import { BirdController } from './BirdController';
 const { ccclass, property } = _decorator;
 
-@ccclass('audioCtrl')
-export class audioCtrl extends Component {
+@ccclass('AudioController')
+export class AudioController extends Component {
     @property(AudioSource)
     private audio: AudioSource = null;
 
-    @property({type: bird})
-    private bird: bird;
+    @property({type: BirdController})
+    private bird: BirdController;
 
     @property({ type: Node })
     private on: Node;
 
     @property({ type: Node })
     private off: Node;    
-
-    private isIconShown: boolean = false;
 
     protected onLoad(): void {
         const audioSource = this.node.getComponent(AudioSource);

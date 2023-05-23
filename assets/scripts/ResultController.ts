@@ -1,11 +1,11 @@
-import { _decorator, Component, Node, Label,Button, Sprite } from 'cc';
-import { score } from './score';
+import { _decorator, Component, Node, Label, Sprite, Button } from 'cc';
+import { Score } from './Score';
 const { ccclass, property } = _decorator;
 
-@ccclass('result')
-export class result extends Component {    
-    @property({type: score})
-    private score: score;
+@ccclass('ResultController')
+export class ResultController extends Component {
+    @property({type: Score})
+    private score: Score;
 
     @property({type: Label})
     private highScore: Label;
@@ -34,9 +34,9 @@ export class result extends Component {
 
     showResults(){
         let maxScore = parseInt(localStorage.getItem('highscore'))
-        this.highScore.string = 'High score: ' + maxScore
-        this.urScore.string = 'Your score: ' + this.score.currentscore
-
+        this.highScore.string = `High score: ${maxScore}`;
+        this.urScore.string = `Your score: ${this.score.currentscore}`;
+        
         this.node.active = true;       
         this.score.node.active = false;
     }

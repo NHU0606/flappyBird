@@ -1,8 +1,8 @@
 import { _decorator, Component, Node, LabelComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('score')
-export class score extends Component {
+@ccclass('Score')
+export class Score extends Component {
     public currentscore: number = 0;
 
     updateScore(num:number){

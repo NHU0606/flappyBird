@@ -1,34 +1,30 @@
-import { _decorator, Component, Sprite, Button, Node, Input, input, AudioSource, EventTouch, director } from 'cc';
-import { bird } from '../bird';
+import { _decorator, Component, director, Node, AudioSource, Sprite} from 'cc';
+import { BirdController } from './BirdController';
 const { ccclass, property } = _decorator;
 
-@ccclass('audioBtn')
-export class audioBtn extends Component {
+@ccclass('BtnController')
+export class BtnController extends Component {
+    private isIconShown: boolean = false;
+       
     @property(AudioSource)
     public audio: AudioSource = null!;
     private isMuted: boolean = false;
 
-    @property({ type: bird })
-    public bird: bird; 
+    @property({ type: BirdController })
+    private bird: BirdController; 
 
     @property({type: Sprite})
-    iconToShow: Sprite = null;    
+    private iconToShow: Sprite = null;    
 
     @property({type: Sprite})
-    iconToHide: Sprite = null;
-
-    @property({ type: Button })
-    private btnPlayAgain: Button; 
-
-    private isIconShown: boolean = false;
+    private iconToHide: Sprite = null;
 
     protected onLoad(): void {
-        this.node.on('click', this.onClick, this);
         this.iconToShow.node.active = false;
         this.iconToHide.node.active = true;
     }
 
-    onClick () {
+    onClickIcon () {
         this.isMuted = !this.isMuted;
         if (this.isMuted) {
             this.audio.volume = 0;
@@ -46,8 +42,16 @@ export class audioBtn extends Component {
         this.iconToShow.node.active = this.isIconShown;
         this.iconToHide.node.active = !this.isIconShown;
     }
+    
+    onClickStartBtn() {
+        director.loadScene('Choose')
+    }
 
-    onClickBtnAgain () {
-        director.loadScene("play")
-    }  
+    onClickNextBtn() {
+        director.loadScene('Play')
+    }
+
+    onClickAgainBtn() {
+        director.loadScene('Play')
+    } 
 }

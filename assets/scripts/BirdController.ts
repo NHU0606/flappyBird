@@ -1,12 +1,11 @@
-import { pipePool } from './pipePool';
-import { _decorator, Component, EventMouse, IPhysics2DContact, Contact2DType, director, ColliderComponent, EventKeyboard, Quat, EventTouch, KeyCode, Node, Vec3, input, Input} from 'cc';
-import { gameCtrl } from './gameCtrl';
+import { _decorator, Component, Node, input, Input, EventTouch, Vec3, Quat} from 'cc';
+import { GameController } from './GameController';
 const { ccclass, property } = _decorator;
 
-@ccclass('bird')
-export class bird extends Component {         
-    @property({type: gameCtrl})
-    private gameCtrl: gameCtrl;
+@ccclass('BirdController')
+export class BirdController extends Component {
+    @property({type: GameController})
+    private gameCtrl: GameController;
 
     private birdPosition: Vec3
     public hitPipe:boolean = false; 
@@ -17,18 +16,18 @@ export class bird extends Component {
         // input.on(Input.EventType.KEY_DOWN, this.keyDown, this)
     }
     //under code cmt that's mean u can use space keyboard
-
+    
     // keyDown(event: EventKeyboard){
-    //     if(event.keyCode == 32) {
-    //         let poY = this.node.position.y + 150;
-    //         this.node.position = new Vec3(this.node.position.x, poY, 0)
-    //     }
-    // }   
-
+        //     if(event.keyCode == 32) {
+            //         let poY = this.node.position.y + 150;
+            //         this.node.position = new Vec3(this.node.position.x, poY, 0)
+            //     }
+            // }   
+            
     onTouchStart (event: EventTouch) {
         this.speed = 3;
     }
-    
+            
     resetBird(){
         this.birdPosition = new Vec3(0,0,0)
         this.node.setPosition(this.birdPosition)
