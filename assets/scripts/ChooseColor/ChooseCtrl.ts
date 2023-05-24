@@ -14,7 +14,7 @@ export class ChooseCtrl extends Component {
     onClickChangeColor (randColor: Color) {
         let birdColor = this.bird.getComponent(Sprite)
 
-        this.randColor = color(Math.floor(Math.random() * 1000));
+        this.randColor = color(Math.floor(Math.random() * 255));
         birdColor.color = this.randColor
     }
     
