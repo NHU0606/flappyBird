@@ -50,10 +50,8 @@ export class BirdController extends Component {
         
         this.node.position = new Vec3(this.node.position.x, positionY, 0)
         
-        if(this.node.position.y > 317) {
+        if(this.node.position.y > 317 || this.node.position.y < -260) {
             this.gameCtrl.gameOver();
-        } else if(this.node.position.y < -260) {
-            this.gameCtrl.gameOver();
-        }
+        } 
     }
 }

@@ -1,4 +1,3 @@
-import { ChangeColor } from './ChooseColor/ChangeColor';
 import { _decorator, Collider2D, IPhysics2DContact, Contact2DType, Component, Node, Prefab, Vec3, math, instantiate, Sprite, director, find } from 'cc';
 import { ResultController } from './ResultController';
 import { BirdController } from './BirdController';
@@ -18,8 +17,10 @@ export class GameController extends Component {
     @property({type: ResultController})
     public result: ResultController;
 
-    @property({type: BirdController})
-    public bird: BirdController;
+    @property({type: Node})
+    public birdNode: Node = null;
+
+    private bird : BirdController;
 
     @property({type: Score})
     public score: Score;
@@ -31,6 +32,8 @@ export class GameController extends Component {
     private pos: Vec3 = new Vec3();
 
     protected onLoad(): void {
+        this.bird = this.birdNode.getComponent(BirdController);
+
         let collider = this.bird.getComponent(Collider2D);
         if (collider) {
             collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
