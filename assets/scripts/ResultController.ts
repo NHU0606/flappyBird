@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, Label, Sprite, Button } from 'cc';
-import { Score } from './Score';
+import { Score } from './score';
 const { ccclass, property } = _decorator;
 
 @ccclass('ResultController')

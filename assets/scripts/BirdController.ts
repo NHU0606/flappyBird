@@ -13,17 +13,8 @@ export class BirdController extends Component {
 
     onLoad() {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        // input.on(Input.EventType.KEY_DOWN, this.keyDown, this)
     }
-    //under code cmt that's mean u can use space keyboard
     
-    // keyDown(event: EventKeyboard){
-        //     if(event.keyCode == 32) {
-            //         let poY = this.node.position.y + 150;
-            //         this.node.position = new Vec3(this.node.position.x, poY, 0)
-            //     }
-            // }   
-            
     onTouchStart (event: EventTouch) {
         this.speed = 3;
     }

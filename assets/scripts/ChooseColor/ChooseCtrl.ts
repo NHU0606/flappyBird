@@ -28,7 +28,6 @@ export class ChooseCtrl extends Component {
             let colorParam = params.addComponent(SaveColor)
             colorParam.temp = this.temp;
         }else{
-
             let colorParam = find(this.MyNode).getComponent(SaveColor);
             colorParam.temp = this.temp;
         }

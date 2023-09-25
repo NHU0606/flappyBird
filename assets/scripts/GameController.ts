@@ -1,7 +1,7 @@
 import { _decorator, Collider2D, IPhysics2DContact, Contact2DType, Component, Node, Prefab, Vec3, math, instantiate, Sprite, director, find } from 'cc';
 import { ResultController } from './ResultController';
 import { BirdController } from './BirdController';
-import { Score } from './Score';
+import { Score } from './score';
 import { SaveColor } from './ChooseColor/SaveColor';
 const { ccclass, property } = _decorator;
 
