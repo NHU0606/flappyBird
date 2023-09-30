@@ -1,8 +1,12 @@
+import { RequestController } from './RequestController';
 import { _decorator, Component, EditBox, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Entry')
 export class Entry extends Component {
+    @property({ type: RequestController })
+    private RequestController: RequestController;
+
     @property({ type: Node })
     private mainEntry: Node;
 
