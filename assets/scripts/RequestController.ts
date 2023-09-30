@@ -4,7 +4,11 @@ const { ccclass, property } = _decorator;
 const ENDPOINT = 'http://localhost:3000/v1';
 @ccclass('RequestController')
 export class RequestController extends Component {
-  async post(params, url: any) {
+
+  contructor() {
+  }
+
+  async post(url: any, params?: any) {
     let resData;
     try {
       const res = await fetch( ENDPOINT + url,
@@ -34,4 +38,14 @@ export class RequestController extends Component {
     }
     return resData;
   }
+
+  async delete(url:any) {
+    // method: DELETE
+  }
+
+  async update(url: any, params?: any) {
+    // method: PUT
+    // params 
+  }
+
 }

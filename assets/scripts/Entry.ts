@@ -6,7 +6,6 @@ const { ccclass, property } = _decorator;
 export class Entry extends Component {
     @property({ type: RequestController })
     private RequestController: RequestController;
-
     @property({ type: Node })
     private mainEntry: Node;
 
@@ -15,6 +14,12 @@ export class Entry extends Component {
 
     @property({ type: EditBox })
     private nickNameLabel: EditBox;
+
+    private request;
+
+    onLoad() {
+      this.request = new RequestController();
+    }
 
     start() {
         this.mainEntry.active = false;
@@ -26,10 +31,14 @@ export class Entry extends Component {
         this.nickName.active = false;
     }
 
-    private onIputSubmitted(): void {
+    private async onIputSubmitted(): Promise<void> {
         const nickname = this.nickNameLabel.string;
+        let formData = new FormData();
+        formData.append("username", nickname);
 
-        console.log(nickname);
+        const res = this.request.post('/auth', formData);
+        res.then(re => console.log(re));
+        // console.log(nickname);
         
     }
 }
