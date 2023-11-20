@@ -6,34 +6,29 @@ const { ccclass, property } = _decorator;
 export class Entry extends Component {
     @property({ type: RequestController })
     private requestController: RequestController;
-
+    
     @property({ type: EditBox })
     private nickNameLabel: EditBox;
-    private authData;
-    public static currentUser;
 
     protected onLoad(): void {
-        let res =  this.requestController.get('/check_user');
-        res.then(r => {
-           if (r['status'] == 200) {
+        let token = JSON.parse(localStorage.getItem('token')) || undefined;
+        if (token) {
             director.loadScene('Choose');
-           } else {
-            console.log("auth")
-           }
-        })
+            this.requestController.get('/ranking');
+        }
     }
     private async onInputSubmitted(): Promise<void> {
         const nickname = this.nickNameLabel.string;
         let formData = new FormData();
         formData.append("username", nickname);
 
-        let res =  this.requestController.post(formData, '/auth');
+        let res =  this.requestController.post(formData, '/check_user');
         res.then(r => {
-           if (r['status'] == 401) {
-            console.log("auth")
-           } else {
-            director.loadScene('Choose');
-            Entry.currentUser = r['id'];
+            if (r['token'] != '') {
+               localStorage.setItem('token', JSON.stringify(r['token']));
+                director.loadScene('Choose');
+            } else {
+               console.log("auth")
            }
         })
         
