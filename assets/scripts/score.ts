@@ -1,9 +1,17 @@
 import { _decorator, Component, Node, LabelComponent } from 'cc';
+import { RequestController } from './RequestController';
 const { ccclass, property } = _decorator;
 
 @ccclass('Score')
 export class Score extends Component {
     public currentscore: number = 0;
+
+    @property({ type: RequestController })
+    private requestController: RequestController;
+
+    protected onLoad(): void {
+        
+    }
 
     async updateScore(num:number){
         this.currentscore = num;
@@ -17,21 +25,11 @@ export class Score extends Component {
             formData.append("ranking[timing]", "0");
             formData.append("ranking[user_id]", "1");
             formData.append("ranking[game_id]", "2");
-            try {
-                const res = await fetch(
-                'http://localhost:3000/v1/ranking',
-                    {
-                        method: 'POST',
-                        body: formData
-                    }
-                );
+            let res =  this.requestController.post(formData, '/ranking');
 
-                const resData = await res.json();
-
-                console.log(resData);
-            } catch (err) {
-                console.log(err.message);
-            }
+            console.log('res', res);
+            
+            
             localStorage.setItem('highscore', num.toString())
         }
     }

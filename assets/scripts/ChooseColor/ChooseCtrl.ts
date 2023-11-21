@@ -31,7 +31,7 @@ export class ChooseCtrl extends Component {
             let colorParam = find(this.MyNode).getComponent(SaveColor);
             colorParam.temp = this.temp;
         }
-        director.loadScene('Play')
+        director.loadScene('play')
     }
 }
 

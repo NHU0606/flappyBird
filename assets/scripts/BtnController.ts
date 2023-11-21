@@ -8,6 +8,6 @@ export class BtnController extends Component {
     }
 
     onClickAgainBtn() {
-        director.loadScene('Play')
+        director.loadScene('play')
     } 
 }

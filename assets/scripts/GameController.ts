@@ -39,7 +39,7 @@ export class GameController extends Component {
             collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
         }
 
-        if(director.getScene().name == 'Play'){
+        if(director.getScene().name == 'play'){
             this.result.resetScore();
             this.startGame();
         }
