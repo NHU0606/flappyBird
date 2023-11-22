@@ -22,7 +22,7 @@ export class Entry extends Component {
         let formData = new FormData();
         formData.append("username", nickname);
 
-        let res =  this.requestController.post(formData, '/check_user');
+        let res =  this.requestController.post_without_header(formData, '/check_user');
         res.then(r => {
             if (r['token'] != '') {
                localStorage.setItem('token', JSON.stringify(r['token']));

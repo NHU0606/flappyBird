@@ -22,9 +22,9 @@ export class Score extends Component {
             let formData = new FormData();
             formData.append("ranking[level]", "0");
             formData.append("ranking[score]", num.toString());
-            formData.append("ranking[timing]", "0");
-            formData.append("ranking[user_id]", "1");
-            formData.append("ranking[game_id]", "2");
+            // formData.append("ranking[timing]", "0");
+            // formData.append("ranking[user_id]", "1");
+            // formData.append("ranking[game_id]", "2");
             let res =  this.requestController.post(formData, '/ranking');
 
             console.log('res', res);
