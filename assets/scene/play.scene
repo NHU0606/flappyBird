@@ -173,7 +173,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 320,
+    "_orthoHeight": 356.85131195335276,
     "_near": 0,
     "_far": 1000,
     "_color": {
@@ -544,6 +544,9 @@
     "prefabPipe": {
       "__uuid__": "eb10513e-73b6-4180-8f1b-abe50cb49a41",
       "__expectedType__": "cc.Prefab"
+    },
+    "request": {
+      "__id__": 36
     },
     "listGround": [
       {

@@ -3,6 +3,7 @@ import { ResultController } from './ResultController';
 import { BirdController } from './BirdController';
 import { Score } from './score';
 import { SaveColor } from './ChooseColor/SaveColor';
+import { RequestController } from './RequestController';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameController')
@@ -10,6 +11,9 @@ export class GameController extends Component {
     @property({type: Prefab})
     private prefabPipe = null;
     private listPipe: Node[] =[null, null, null]
+
+    @property({ type: RequestController })
+    private request: RequestController;
 
     @property({ type: Sprite })
     private listGround: Sprite[] = [null, null];
