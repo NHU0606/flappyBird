@@ -6,9 +6,12 @@ const { ccclass, property } = _decorator;
 export class Entry extends Component {
     @property({ type: RequestController })
     private requestController: RequestController;
-    
+
     @property({ type: EditBox })
     private nickNameLabel: EditBox;
+
+    @property({ type: Node })
+    private warnNode: Node;
 
     protected onLoad(): void {
         let token = JSON.parse(localStorage.getItem('token')) || undefined;
@@ -22,20 +25,23 @@ export class Entry extends Component {
         let formData = new FormData();
         formData.append("username", nickname);
 
-        let res =  this.requestController.post_without_header(formData, '/check_user');
+        let res = this.requestController.post_without_header(formData, '/check_user');
         res.then(r => {
             if (r['token'] != '') {
-               localStorage.setItem('token', JSON.stringify(r['token']));
+                localStorage.setItem('token', JSON.stringify(r['token']));
                 director.loadScene('Choose');
             } else {
-               console.log("auth")
-           }
+                this.warnNode.active = true;
+                console.log("auth")
+            }
         })
-        
+
     }
 
     onClickPlayBtn() {
-        this.onInputSubmitted(); 
-    } 
+        this.onInputSubmitted();
+    }
+
+   
 }
 

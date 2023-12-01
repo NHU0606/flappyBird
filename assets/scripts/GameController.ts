@@ -120,4 +120,8 @@ export class GameController extends Component {
             this.listPipe[i].setPosition(this.pos)
         }
     }
+
+    onClickBtnLogOut() {
+        console.log('thao tac log out o file GameControler.ts line 125');
+    }
 }
